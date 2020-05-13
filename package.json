@@ -1,0 +1,35 @@
+{
+  "name": "serverless-sagemaker-groundtruth",
+  "version": "1.0.0",
+  "description": "Serverless Plugin with AWS Sagemaker Groundtruth utilities (local template testing, task creation, task status ...)",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piercus/serverless-sagemaker-groundtruth.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "sagemaker",
+    "groundtruth",
+    "liquid",
+    "template",
+    "task",
+    "utilities",
+    "local",
+    "test",
+    "annotation",
+    "labelling",
+    "machine",
+    "learning"
+  ],
+  "author": "Pierre Colle <piercus@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piercus/serverless-sagemaker-groundtruth/issues"
+  },
+  "homepage": "https://github.com/piercus/serverless-sagemaker-groundtruth#readme"
+}
