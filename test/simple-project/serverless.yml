@@ -1,0 +1,29 @@
+
+service:
+  name: simple-service
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  memorySize: 1024 # optional, in MB, default is 1024
+  timeout: 10 # optional, in seconds, default is 6
+  versionFunctions: false # optional, default is true
+  region: eu-west-1
+  stage: ${opt:env, 'dev'}
+
+plugins:
+  - serverless-sagemaker-groundtruth
+
+functions:
+  pre-example: 
+    handler: handler.pre
+    name: pre
+  post-example: 
+    handler: handler.postObjectDetection
+    name: post
+
+groundtruthTasks:
+  basic:
+    pre: pre-example
+    post: post-example
+    template: app/templates/object-detection/basic.liquid.html

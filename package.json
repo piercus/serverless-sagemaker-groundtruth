@@ -31,5 +31,18 @@
   "bugs": {
     "url": "https://github.com/piercus/serverless-sagemaker-groundtruth/issues"
   },
-  "homepage": "https://github.com/piercus/serverless-sagemaker-groundtruth#readme"
+  "homepage": "https://github.com/piercus/serverless-sagemaker-groundtruth#readme",
+  "dependencies": {
+    "amazon-s3-uri": "0.0.3",
+    "aws-sdk": "^2.676.0",
+    "bluebird": "^3.7.2",
+    "connect": "^3.7.0",
+    "liquid": "^4.0.1",
+    "puppeteer": "^3.0.4",
+    "query-selector-shadow-dom": "^0.4.6",
+    "tmp-promise": "^3.0.2"
+  },
+  "devDependencies": {
+    "xo": "^0.30.0"
+  }
 }
