@@ -1,6 +1,6 @@
 {
   "name": "serverless-sagemaker-groundtruth",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Serverless Plugin with AWS Sagemaker Groundtruth utilities (local template testing, task creation, task status ...)",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/piercus/serverless-sagemaker-groundtruth#readme",
   "dependencies": {
     "amazon-s3-uri": "0.0.3",
-    "aws-sdk": "^2.676.0",
+    "aws-sdk": "^2.677.0",
     "bluebird": "^3.7.2",
     "connect": "^3.7.0",
     "liquid": "^4.0.1",
