@@ -134,7 +134,7 @@ class ServerlessSagemakerGroundtruth {
 			template: this.task.template,
 			prelambdaOutput: this.prelambdaOutput,
 			port: this.port
-		}).then(server => {
+		}).then(({server}) => {
 			this.server = server;
 		});
 	}
@@ -194,7 +194,8 @@ class ServerlessSagemakerGroundtruth {
 		const task = this.getServerlessGroundtruthTask();
 		return invokePostLambda({
 			lambda: this.getLambda(task.post),
-			consolidationRequestData: this.consolidationRequestData
+			consolidationRequestData: this.consolidationRequestData,
+			manifestRows: [this.manifestRow]
 		}).then(result => {
 			console.log(`Post lambda results is :\n${JSON.stringify(result, null, 2)}`);
 		});

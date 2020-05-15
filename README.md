@@ -15,11 +15,11 @@ Ideas for future implementation :
 
 ## Installation
 
-```
+```bash
 npm install --save-dev serverless-sagemaker-groundtruth
 ```
 
-## Usage
+## Usage as a serverless plugin
 
 ### Example serverless.yml
 
@@ -75,7 +75,6 @@ const h = require('hasard');
 module.exports = function({
 	page, 
 	manifestRow,  
-	prelambdaOutput, // eslint-disable-line no-unused-vars
 	workerId
 }){
 	
@@ -105,7 +104,7 @@ module.exports = function({
 					width,
 					height
 				]),
-				category: h.integer(0, 1)
+				category: h.integer(0, nCategories-1)
 			});
 			
 			const workerAnnotations = randomAnnotation.run(nBoxes)
@@ -126,7 +125,7 @@ module.exports = function({
 }
 ```
 
-#### The command
+#### The end to end command
 
 ```bash
 serverless groundtruth test e2e \
@@ -136,11 +135,49 @@ serverless groundtruth test e2e \
 	--workerIds a,b,c
 ```
 
+## Usage programmatically
+
+You can use `serverless-sagemaker-groundtruth` functions in your nodejs code by using 
+
+```js
+const gtLibs = require('serverless-sagemaker-groundtruth/lib')
+```
+
+### endToEnd
+```js
+
+/**
+* @param {String} template path to the liquid template file
+* @param {String} labelAttributeName labelAttributeName to use as output of the postLambda function
+* @param {Object} manifestRow js object reproesnting the manifest row
+* @param {Function} preLambda js function to use as pre lambda function
+* @param {Number} [port=3000]  port to use to serve the web page
+* @param {Function} postLambda js function to use as post lambda function
+* @param {Array.<String>} workerIds js function to use as post lambda function
+* @param {PuppeteerModule} puppeteerMod module that simulate the behavior of a worker
+* @returns {Promise.<PostLambdaOutput>}
+*/
+
+return gtLibs.endToEnd({
+	template,
+	labelAttributeName, 
+	manifestRow,
+	preLambda,
+	port,
+	postLambda,
+	workerIds,
+	puppeteerMod
+});
+
+```
+
+
 ## Remarks
 
 ### Local consolidation request file compatibilty
 
-You need to make sure that you post lambda function is compatible with using local filename in `event.payload.s3Uri`
+You need to make sure that you post lambda function is compatible with using local filename in `event.payload.s3Uri`.
+You can use `gtLibs.loadFile` if you need such a function
 
 ### Template
 

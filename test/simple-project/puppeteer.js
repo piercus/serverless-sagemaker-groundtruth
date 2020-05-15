@@ -14,7 +14,6 @@ const h = require('hasard');
 module.exports = function ({
 	page,
 	manifestRow,
-	prelambdaOutput, // eslint-disable-line no-unused-vars
 	workerId
 }) {
 	// We draw 5 boxes for each worker
@@ -42,7 +41,7 @@ module.exports = function ({
 					width,
 					height
 				]),
-				category: h.integer(0, 1)
+				category: h.integer(0, nCategories - 1)
 			});
 
 			const workerAnnotations = randomAnnotation.run(nBoxes);
