@@ -23,16 +23,16 @@ module.exports = function ({contents, dataObject, workerIds, iouThreshold = 0.5}
 	}
 
 	const nWorkers = contents.length;
-	const labels = uniq(contents.map(c => c.boundingBoxes.map(t => t.label)).reduce((a, b) => a.concat(b)));
+	const labels = uniq(contents.map(c => c.annotatedResult.boundingBoxes.map(t => t.label)).reduce((a, b) => a.concat(b)));
 	const couplesIndexes = getCouples(contents.length);
 	// Console.log({labels})
 	let allLabelsResult = [];
 
 	labels.forEach(l => {
-		const totalBoxes = contents.map(c => c.boundingBoxes.filter(t => t.label === l).length).reduce((a, b) => a + b, 0);
+		const totalBoxes = contents.map(c => c.annotatedResult.boundingBoxes.filter(t => t.label === l).length).reduce((a, b) => a + b, 0);
 		let allCouplesBoxesSorted;
 		if (nWorkers === 1) {
-			const preds = contents[0].boundingBoxes.filter(t => t.label === l);
+			const preds = contents[0].annotatedResult.boundingBoxes.filter(t => t.label === l);
 			const localWorkerIds = [workerIds[0]];
 			const matched = matchCoupleBoxes(preds, [], {iouThreshold});
 			matched.forEach(({boxes}) => boxes.forEach(b => {
@@ -42,8 +42,8 @@ module.exports = function ({contents, dataObject, workerIds, iouThreshold = 0.5}
 		} else {
 			allCouplesBoxesSorted = couplesIndexes
 				.map(([i0, i1]) => {
-					const preds0 = contents[i0].boundingBoxes.filter(t => t.label === l);
-					const preds1 = contents[i1].boundingBoxes.filter(t => t.label === l);
+					const preds0 = contents[i0].annotatedResult.boundingBoxes.filter(t => t.label === l);
+					const preds1 = contents[i1].annotatedResult.boundingBoxes.filter(t => t.label === l);
 
 					const localWorkerIds = [workerIds[i0], workerIds[i1]];
 					const matched = matchCoupleBoxes(preds0, preds1, {iouThreshold});

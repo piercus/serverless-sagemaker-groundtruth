@@ -3,7 +3,7 @@
 <crowd-form>
   <crowd-bounding-box
     name="annotatedResult"
-    src="{{ task.input.taskObject | grant_read_access }}"
+    src="{{ task.input.taskObject}}"
     header="Draw bounding boxes around all the cats and dogs in this image"
     labels="['Cat', 'Dog']"
   >
