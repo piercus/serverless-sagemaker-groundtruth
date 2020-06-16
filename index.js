@@ -115,7 +115,7 @@ class ServerlessSagemakerGroundtruth {
 
 	prelambda() {
 		const task = this.getServerlessGroundtruthTask();
-		return loadFileRow({s3Uri: this.options.manifest})
+		return loadFileRow({s3Uri: this.options.manifest, rowIndex: this.options.row || 0})
 			.then(rowData => {
 				const manifestRow = JSON.parse(rowData);
 				this.manifestRow = manifestRow;

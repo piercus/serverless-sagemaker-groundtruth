@@ -49,7 +49,10 @@ groundtruthTasks:
 ### Serve a liquid template against a manifest file
 
 ```bash
-serverless groundtruth serve --groundtruthTask <groundtruthTask-name> --manifest <s3-uri or local file>
+serverless groundtruth serve \
+  --groundtruthTask <groundtruthTask-name> \
+  --manifest <s3-uri or local file> \
+  --row <row index>
 ```
 
 ### Test e2e behavior of sagemaker groundtruth workflow
