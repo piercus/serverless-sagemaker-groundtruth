@@ -13,38 +13,46 @@ class ServerlessSagemakerGroundtruth {
 			groundtruthTask: {
 				usage: 'Specify the task to use, should correspond to a groundtruthTask in your serverless.yml file',
 				shortcut: 't',
-				required: true
+				required: true,
+				type: 'string'
 			},
 			manifest: {
 				usage: 'Specify the input manifest file to use, can be local file or s3 uri',
 				shortcut: 'm',
-				required: true
+				required: true,
+				type: 'string'
 			},
 			row: {
 				usage: 'Specify the row of the input manifest to use, by default this will be 0 (first row)',
 				shortcut: 'r',
-				required: false
+				required: false,
+				type: 'string'
 			},
 			port: {
 				usage: 'The port to use for the server to serve the page (by default it will be 3000)',
 				shortcut: 'p',
-				required: false
+				required: false,
+				type: 'string'
 			},
 			consolidationRequest: {
 				usage: 'Json filename used as consolidation request file for the post lambda function, the plugin will create a fake event from this filename',
-				required: false
+				required: false,
+				type: 'string'
 			},
 			consolidationRequestEvent: {
 				usage: 'Json filename used as input of your post lambda function',
-				required: false
+				required: false,
+				type: 'string'
 			},
 			workerIds: {
 				usage: 'comma separated list of workerIds to use for simulation',
-				required: true
+				required: true,
+				type: 'string'
 			},
 			puppeteerModule: {
 				usage: 'path to a puppeteer module to simulate worker\'s behavior, for more information see https://github.com/piercus/serverless-sagemaker-groundtruth',
-				required: true
+				required: true,
+				type: 'string'
 			}
 		};
 
