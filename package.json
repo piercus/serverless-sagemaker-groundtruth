@@ -1,6 +1,6 @@
 {
   "name": "serverless-sagemaker-groundtruth",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Serverless Plugin with AWS Sagemaker Groundtruth utilities (local template testing, task creation, task status ...)",
   "main": "index.js",
   "scripts": {
